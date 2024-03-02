@@ -12,16 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = void 0;
-const expressApp_1 = __importDefault(require("./expressApp"));
-const port = process.env.PORT || 8080;
-const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
-    expressApp_1.default.listen(port, () => console.log(`server running on port : ${port}`));
-    process.on('uncaughtException', (err) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(err);
-        process.exit(1);
-    }));
-});
-exports.startServer = startServer;
-(0, exports.startServer)()
-    .then(() => console.log(`server running.....`));
+const express_1 = __importDefault(require("express"));
+const router = express_1.default.Router();
+//api endpoints
+router.post('/product', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.status(201).json({});
+}));
+exports.default = router;
